@@ -36,9 +36,7 @@ namespace ConsoleApp1
                     maiorValor = faturamento.Valor;
                 }
             }
-
-            // Exibindo o resultado
-            Console.WriteLine("O maior valor é: " + maiorValor);
+            Console.WriteLine("O maior valor faturado é: " + maiorValor);
 
             // Encontrando o menor valor da propriedade Valor
             double menorValor = maiorValor;
@@ -49,9 +47,45 @@ namespace ConsoleApp1
                     menorValor = faturamento.Valor;
                 }
             }
-
-            // Exibindo o resultado
             Console.WriteLine("O menor valor é: " + menorValor);
+
+            // Calculando quantos dias uteis de Faturamento.
+            int count = 0;
+            foreach (Faturamento faturamento in faturamentos)
+            {
+                if (faturamento.Valor > 0)
+                {
+                    count++;
+                }
+            }
+            var diasValidos = count;
+            //Console.WriteLine("Tivemos faturamento em {0} dia(s) úteis", diasValidos);
+
+            // Somando os valores maiores que 0
+            double soma = 0;
+            foreach (Faturamento faturamento in faturamentos)
+            {
+                if (faturamento.Valor > 0)
+                {
+                    soma += faturamento.Valor;
+                }
+            }
+            //Console.WriteLine("$ {0} foi o faturamento total mensal", soma);
+
+            //MEDIA
+            double media = soma / diasValidos;
+            //Console.WriteLine("A média de Faturamento mensal é $ {0}", media);
+
+            // Calculando quantos dias uteis de Faturamento acima da Media mensal.
+            int acimaDaMedia = 0;
+            foreach (Faturamento faturamento in faturamentos)
+            {
+                if (faturamento.Valor > media)
+                {
+                    acimaDaMedia++;
+                }
+            }
+            Console.WriteLine("Tivemos {0} dia(s) de Faturamento acima da Média Mensal", acimaDaMedia);
 
         }
 
