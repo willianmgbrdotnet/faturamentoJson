@@ -25,13 +25,21 @@ namespace ConsoleApp1
         {
             var json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\dados.json");
 
-            List<Faturamento> faturamento = JsonConvert.DeserializeObject<List<Faturamento>>(json);
+            List<Faturamento> faturamentos = JsonConvert.DeserializeObject<List<Faturamento>>(json);
 
-            //Console.WriteLine(json);
+            // Encontrando o maior valor da propriedade Valor
+            double maiorValor = 0;
+            foreach (Faturamento faturamento in faturamentos)
+            {
+                if (faturamento.Valor > maiorValor)
+                {
+                    maiorValor = faturamento.Valor;
+                }
+            }
 
-            Console.ReadKey();
-
+            // Exibindo o resultado
+            Console.WriteLine("O maior valor é: " + maiorValor);
         }
-        
+
     }
 }
