@@ -39,6 +39,20 @@ namespace ConsoleApp1
 
             // Exibindo o resultado
             Console.WriteLine("O maior valor é: " + maiorValor);
+
+            // Encontrando o menor valor da propriedade Valor
+            double menorValor = maiorValor;
+            foreach (Faturamento faturamento in faturamentos)
+            {
+                if (faturamento.Valor < menorValor && faturamento.Valor > 0)
+                {
+                    menorValor = faturamento.Valor;
+                }
+            }
+
+            // Exibindo o resultado
+            Console.WriteLine("O menor valor é: " + menorValor);
+
         }
 
     }
